@@ -27,7 +27,7 @@ public:
 
     virtual bool preHandle(int sock) = 0;
     virtual bool handle(int sock) = 0;
-    virtual void postHandle() = 0;
+    virtual void postHandle(int sock) = 0;
 };
 
 #endif   /* __BASEREQUESTHANDLER_H */

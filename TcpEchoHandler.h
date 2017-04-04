@@ -29,7 +29,7 @@ public:
 
     bool preHandle(int sock);
     bool handle(int sock);
-    void postHandle();
+    void postHandle(int sock) throw();
 
 private:
     char recv_buf[MAX_BUF_SIZE + 1];
