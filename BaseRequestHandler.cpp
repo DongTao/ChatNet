@@ -19,16 +19,20 @@
 
 void BaseRequestHandler::process_request(int sock)
 {
-    if (!preHandle(sock)) {
-        postHandle();
-        return;
+    try {
+        std::cout << "prehandle request socketfd:" << sock << std::endl;
+        if (!preHandle(sock)) {
+            std::cout << "prehandle request failed socketfd:" << sock << std::endl;
+        } else {
+            std::cout << "handle request socketfd:" << sock << std::endl;
+            if (!handle(sock)) {
+                std::cout << "handle request failed socketfd:" << sock << std::endl;
+            }
+        }
+        std::cout << "posthandle request socketfd:" << sock << std::endl;
+        postHandle(sock);
+    } catch (const std::exception& ex) {
+        std::cout << ex.what() << std::endl;
+        postHandle(sock);
     }
-
-    std::cout << "handle request" << std::endl;
-    if (!handle(sock)) {
-        postHandle();
-        return;
-    }
-
-    postHandle();
 }

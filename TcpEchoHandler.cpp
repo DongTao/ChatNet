@@ -21,6 +21,7 @@
 #include <sys/socket.h>
 #include <pthread.h>
 #include "TcpEchoHandler.h"
+#include <unistd.h>
 
 bool TcpEchoHandler::preHandle(int sock)
 {
@@ -32,7 +33,7 @@ bool TcpEchoHandler::handle(int sock)
     ssize_t ret;
 
     while (1) {
-        if ((ret = recv(sock, this->recv_buf, MAX_BUF_SIZE, 0)) == -1) {
+        if ((ret = recv(sock, this->recv_buf, MAX_BUF_SIZE, 0)) <= 0) {
             perror("recv failed");
             return false;
         }
@@ -48,7 +49,7 @@ bool TcpEchoHandler::handle(int sock)
     return true;
 }
 
-void TcpEchoHandler::postHandle()
+void TcpEchoHandler::postHandle(int sock) throw()
 {
-
+    close(sock);
 }

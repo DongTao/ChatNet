@@ -92,4 +92,5 @@ void *TcpThreadingServer::process_request(void *arg)
     std::cout << "start thread " << pthread_self() << std::endl;
     pthread_detach(pthread_self());
     p->ts->mHandler.process_request(conn_sock);
+    std::cout << "stop thread " << pthread_self() << std::endl;
 }
