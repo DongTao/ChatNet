@@ -37,7 +37,7 @@ bool TcpEchoHandler::handle(int sock)
             perror("recv failed");
             return false;
         }
-
+        this->recv_buf[ret] = 0;
         std::cout << "[" << pthread_self() << "]: " << this->recv_buf << std::endl;
 
         if ((ret = send(sock, this->recv_buf, ret, 0)) == -1) {
