@@ -49,9 +49,10 @@ bool TcpChatClient::prepare()
 
 bool TcpChatClient::onSend(std::string &s)
 {
-    std::cin >> s;
+    return std::getline(std::cin, s);
+    //std::cin >> s;
 
-    return true;
+    //return true;
 }
 
 bool TcpChatClient::onReceive(std::string &s)
@@ -108,8 +109,7 @@ void *TcpChatClient::recv_handler(void *arg)
     while (1) {
         ret = recv(c->mConnSock, buf, MAX_BUF_SIZE, 0);
         if (ret > 0) {
-            msg = "";
-            msg = buf;
+            msg.assign(buf, ret);
             //c->mUiLock.lock();
             c->onReceive(msg);
             //c->mUiLock.unlock();
