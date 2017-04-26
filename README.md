@@ -1,38 +1,21 @@
-# ChatRoom
+# ChatNet
 
 ## Feature List
-* P2P communication
+* All clients connecting to chat server can send message to each other
 
 ## Dependency
-* gtest
-* libevent
 
-## Schedule
-### Day 1
-* Find demos(how to wrapper epoll, socket, etc)
-* Implement a basic demo
-* Maybe a UML is needed
-### Day 2
-* Add unit test for the basic demo
-### Day 3
-* Add chat protocol
-### Day 4
-* Add an easy PIN verify
-### Day 5
-### Day 6
-### Day 7(Milestone)
-### Day 8
-### Day 9
-### Day 10
-### Day 11
-### Day 12
-### Day 13
-### Day 14
+## Revision
+* 2017/04/05
+    * A base echo server is completed
+    * Design message parser class but not used
+* 2017/04/09
+    * Clients can send messages to each other
+    * Two bugs are fixed:
+        1. Server side socket is not closed when client disconnecting
+        2. Server did not append '\0' on received string
 
 ## TODO
-* TCP or UDP? TCP is easier, so it is suitable in this quiz
-* Need a application layer protocol
-* Need a unit test framework
-* A network I/O library is optional
+* Need to integrate application layer protocol into project
+* Need unit tests(gtest)
 * How to add a security protocol
-* OO must be used in this quiz???

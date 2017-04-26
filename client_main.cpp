@@ -16,7 +16,8 @@
  */
 #include <stdlib.h>
 #include <iostream>
-#include "TcpClient.h"
+
+#include "TcpChatClient.h"
 
 static void usage(void)
 {
@@ -30,9 +31,9 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    TcpClient echoClient(argv[1], atoi(argv[2]));
+    TcpChatClient chatClient(argv[1], atoi(argv[2]));
 
-    echoClient.start();
+    chatClient.start();
 
     return 0;
 }

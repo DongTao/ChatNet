@@ -14,15 +14,15 @@
  *
  * =====================================================================================
  */
-#include "TcpEchoHandler.h"
+#include "TcpChatHandler.h"
 #include "TcpThreadingServer.h"
 
 int main(int argc, char *argv[])
 {
-    TcpEchoHandler echoHandler;
-    TcpThreadingServer echoServer(NULL, 10080, echoHandler);
+    TcpChatHandler handler;
+    TcpThreadingServer chatServer(NULL, 10080, handler);
 
-    echoServer.serve_forever();
+    chatServer.serve_forever();
 
     return 0;
 }
